@@ -1,20 +1,11 @@
 import pygame
-
-# Определение констант
-WIDTH = 640 # Ширина окна
-HEIGHT = 480 # Высота окна
-FPS = 60 # Кадры в секунду
-TITLE = "Platformer"
-
-# Определение цветов
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-BACKGROUND_COLOR = (239, 188, 33)
+from constants import *
 
 pygame.init() # Инициализация pygame
 screen = pygame.display.set_mode((WIDTH, HEIGHT)) # Создаем окно для отрисовки
 pygame.display.set_caption(TITLE) # Устанавливает заголовок окна
+
+
 
 running = True
 # Игровой цикл
