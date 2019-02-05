@@ -1,13 +1,15 @@
 import pygame
 from constants import *
-from settings import path_to_player
+from settings import player_image
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(path_to_player).convert()
+        surface = pygame.image.load(player_image).convert()
+        self.image = pygame.transform.scale(surface, (50, 50))
         self.rect = self.image.get_rect()
         self.rect.center = (WIDTH / 2, HEIGHT / 2)
+ #x1=240 y1=294 x2=659 y2=462 
 
     def update(self):
         pass
