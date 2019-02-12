@@ -5,17 +5,27 @@ from settings import player_image
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        surface = pygame.image.load(player_image).convert()
-        self.image = pygame.transform.scale(surface, (50, 50))
+        surface = pygame.image.load(player_image).convert_alpha()
+        scale_coefficient = PLAYER_SHIP_WIDTH / surface.get_rect().width
+        self.image = pygame.transform.rotozoom(surface, 0, scale_coefficient)
         self.rect = self.image.get_rect()
-        self.rect.center = (WIDTH / 2, HEIGHT / 2)
- #x1=240 y1=294 x2=659 y2=462 
+        self.rect.midbottom = (WIDTH / 2, HEIGHT - 20)
+        self.speedx = 0
+        self.accx = 5 
 
     def update(self):
-        pass
+        self.speedx = 0
+        key_state = pygame.key.get_pressed()
+        if (key_state[pygame.K_LEFT]):
+            self.speedx -= self.accx
+        if (key_state[pygame.K_RIGHT]):
+            self.speedx += self.accx
+
+        self.rect.x += self.speedx
 
 
-    def draw(self):
-        self.image.draw()
-        pass
+
+    #def draw(self):
+     #   self.image.draw()
+     #   pass
         
