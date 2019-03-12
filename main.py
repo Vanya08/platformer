@@ -47,7 +47,7 @@ while running:
     coord = "({0}, {1})".format(player.rect.midtop[0], player.rect.midtop[1])
     textsurface = myfont.render(coord, False, (224, 24, 24))
     screen.blit(textsurface, (0,0))
-    print(coord)
+    # print(coord)
 
     pygame.display.flip() # Отображаем нарисованое в Double buffer
 
