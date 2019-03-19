@@ -32,8 +32,7 @@ class Bullet(pygame.sprite.Sprite):
             self.rect.center = (x,y)
 
         self.rect.centery -= self.speed
-        print(self.rect.midbottom)
+        # print(self.rect.midbottom)
         if (self.rect.midbottom[1] <= 0):
             self.kill()
-
 

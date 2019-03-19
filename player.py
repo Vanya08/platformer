@@ -42,8 +42,7 @@ class Player(pygame.sprite.Sprite):
         if (self.rect.bottom > HEIGHT):
             self.rect.bottom = HEIGHT    
     
-    def draw(self, screen):
-        coord = "({0}, {1})".format(self.rect.x, self.rect.y)
-        textsurface = self.myfont.render(coord, False, (224, 24, 24))
-        screen.blit(textsurface, (0,0))
-        print(coord)
+    # def draw(self, screen):
+        # coord = "({0}, {1})".format(self.rect.x, self.rect.y)
+        # textsurface = self.myfont.render(coord, False, (224, 24, 24))
+        # screen.blit(textsurface, (0,0))

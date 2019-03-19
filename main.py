@@ -3,6 +3,7 @@ from constants import *
 from player import Player
 from enemy import Enemy
 from bullet import Bullet
+from level1 import Level1
 
 pygame.init()
 pygame.font.init() # Инициализация pygame
@@ -11,9 +12,11 @@ pygame.display.set_caption(TITLE) # Устанавливает заголово�
 clock = pygame.time.Clock()
 
 all_sprites = pygame.sprite.Group()
+level1 = Level1()
 player = Player()
 enemy = Enemy()
 bullet = Bullet()
+all_sprites.add(level1)
 all_sprites.add(player)
 all_sprites.add(enemy)
 all_sprites.add(bullet)
