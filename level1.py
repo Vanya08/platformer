@@ -1,6 +1,7 @@
 import pygame
 from constants import *
 from settings import level1_image
+import math
 
 class Level1(pygame.sprite.Sprite):
     def __init__(self):
@@ -9,14 +10,31 @@ class Level1(pygame.sprite.Sprite):
         scale_coefficient = WIDTH / surface.get_rect().width
         raw_surface = pygame.transform.rotozoom(surface, 0, scale_coefficient)
 
-        count = 10
-        surface_height = raw_surface.get_rect().height
-        self.image = pygame.Surface((WIDTH, surface_height * count))
+        self.images = [\
+            pygame.transform.rotozoom(raw_surface, 0, scale_coefficient),\
+            pygame.transform.flip(pygame.transform.rotozoom(raw_surface, 0, scale_coefficient), False, True)\
+        ]
 
-        for i in range(count):
-            self.image.blit(surface, (0, surface_height * i))
+        h = self.images[0].get_rect().height 
+        self.block = pygame.Surface((WIDTH, 2*h))
 
-        self.rect = self.image.get_rect()
-        self.rect.midbottom = (WIDTH / 2, HEIGHT)
+        self.block.blit(self.images[0], (0,0))
+        self.block.blit(self.images[1], (0,h))
 
-        # def update(self):
+        self.block_height = self.block.get_rect().height
+
+        self.speed = 5
+        self.position1 = HEIGHT - self.block_height
+        self.position2 = HEIGHT - 2 * self.block_height
+
+    def update(self):
+        self.position1 += self.speed
+        self.position2 += self.speed
+        if (self.position1 >= HEIGHT):
+            self.position1 = self.position2 - self.block_height
+        if (self.position2 >= HEIGHT):
+            self.position2 = self.position1 - self.block_height
+
+    def draw(self, screen):
+        screen.blit(self.block, (0, self.position1))
+        screen.blit(self.block, (0, self.position2))

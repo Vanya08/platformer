@@ -4,17 +4,20 @@ from settings import bullet_image
 from spritesheet import Spritesheet
 
 class Bullet(pygame.sprite.Sprite):     
-    def __init__(self):
+    def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         ss = Spritesheet(bullet_image)
-        self.bullets = ss.images_at([\
+        self.bullet_images = ss.images_at([\
             (275, 69, 20, 10)\
         ], -1)
+        self.bullets = []
+        for bullet in self.bullet_images:
+            self.bullets.append(pygame.transform.rotate(bullet, 90))
         self.idx = 0
         self.image = self.bullets[self.idx]
         self.last_idx = len(self.bullets) - 1
         self.rect = self.image.get_rect()
-        self.rect.midbottom = (WIDTH / 2, HEIGHT)
+        self.rect.midbottom = (x, y)
         self.speed = 4
         self.frames_count = 0
         self.animate_each_frame = 10
