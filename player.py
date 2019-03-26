@@ -46,3 +46,4 @@ class Player(pygame.sprite.Sprite):
         # coord = "({0}, {1})".format(self.rect.x, self.rect.y)
         # textsurface = self.myfont.render(coord, False, (224, 24, 24))
         # screen.blit(textsurface, (0,0))
+        

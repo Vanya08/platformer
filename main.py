@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT)) # Создаем окно дл
 pygame.display.set_caption(TITLE) # Устанавливает заголовок окна
 clock = pygame.time.Clock()
 
-basic_font = pygame.font.SysFont(None, 54)
+basic_font = pygame.font.SysFont('Arial', 54)
 game_over_text = basic_font.render("Game over", True, RED)
 game_over_text_rect = game_over_text.get_rect()
 game_over_text_rect.centerx = screen.get_rect().centerx
@@ -86,6 +86,7 @@ while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                    game_over = False
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                     game_over = False
                     init()
